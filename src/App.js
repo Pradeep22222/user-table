@@ -1,23 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import "bootstrap/dist/css/bootstrap.min.css";
+import { useState } from "react";
+import "./App.css";
+import { ListForm } from "./Components/Form";
+import { List } from "./Components/List";
 
 function App() {
+  const [name, setName] = useState([]);
+  const addName = (value) => {
+    setName([...name, value]);
+  };
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <ListForm addName={addName}></ListForm>
+      <hr />
+      <List names={name}></List>
     </div>
   );
 }
